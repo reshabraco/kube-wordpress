@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: wordpressdb-deploy
+  labels:
+    app: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: wordpressdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: wordpressdb
+    spec:
+      containers:
+      - image: mariadb:10.5.2-bionic
+        name: wordpressdb-container
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: redhat
+        - name: MYSQL_USER
+          value: wordpress
+        - name: MYSQL_PASSWORD
+          value: redhat
+        - name: MYSQL_DATABASE
+          value: wordpress
+        ports:
+        - containerPort: 3306
+          name: wordpressdb-svc
+        volumeMounts:
+        - name: wordpressdb-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: wordpressdb-persistent-storage
+        persistentVolumeClaim:
+          claimName: wordpressdb-pvc
