@@ -35,7 +35,7 @@ $ mkdir wordpress-data
 $ sudo chown 33:tape wordpress-data
 $ mkdir wordpress-config
 $ cd wordpress-config
-$ ls -l
+$ ls -l /home/kube/wordpress-config
 kustomization.yaml
 wordpressdb-deployment.yaml
 wordpressdb-pv-pvc.yaml
@@ -43,3 +43,6 @@ wordpressdb-svc.yaml
 wordpress-deployment.yaml
 wordpress-pv-pvc.yaml
 wordpress-svc.yaml
+$ pwd
+ /home/kube/wordpress-config
+$ kubectl apply -k ./
