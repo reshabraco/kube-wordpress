@@ -1,6 +1,6 @@
-yum install git
+**yum install git**
 
-git clone https://github.com/reshabraco/kube-wordpress.git
+**git clone https://github.com/reshabraco/kube-wordpress.git**
 
 cd kube-wordpress
 
