@@ -23,6 +23,7 @@ mkdir /home/kube/wordpressdb-data
 chown polkitd:root /home/kube/wordpressdb-data
 mkdir /home/kube/wordpress-data
 chown 33:tape /home/kube/wordpress-data
+cp *.yml /home/kube/
 su - kube -c "minikube config set driver docker"
 su - kube -c "minikube start --driver=docker"
 su - kube -c "docker image ls"
